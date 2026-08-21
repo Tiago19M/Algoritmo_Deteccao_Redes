@@ -49,4 +49,3 @@ dependencies:
   - mkl_fft=2.2.0=py314hc849d88_0
   - mkl_random=1.4.1=py314h973aee8_0
   - numpy=2.5.1=py314ha8834a8_0
-prefix: /home/tiago/.conda/envs/deteccao-redes

@@ -49,7 +49,7 @@ Comunidades encontradas:
 Comunidade de label 0: vértice 0, vértice 1, vértice 2
 Comunidade de label 5: vértice 3, vértice 4, vértice 5
 
-![Comunidades detectadas em rede1.csv](output/comunidades_rede1.png)
+![Comunidades detectadas em rede1.csv](plots/comunidades_rede1.png)
 
 ### Dataset rede2.csv
 Máximo de iterações: 100
@@ -61,7 +61,7 @@ Comunidades encontradas:
 Comunidade de label 1: vértice 0, vértice 1, vértice 2, vértice 3
 Comunidade de label 5: vértice 4, vértice 5, vértice 6
 
-![Comunidades detectadas em rede2.csv](output/comunidades_rede2.png)
+![Comunidades detectadas em rede2.csv](plots/comunidades_rede2.png)
 
 Obs: como o algoritmo utiliza de aleatoriedade para a determinação da ordem de visitação dos vértices e também para a escolha da label em caso de empate de frequências, diferentes execuções podem gerar diferentes resultados.
 

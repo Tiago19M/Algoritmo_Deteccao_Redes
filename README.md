@@ -40,26 +40,26 @@ origem,destino
 ## 6. Resultados dos testes
 
 ### Dataset rede1.csv
-Máximo de iterações: 100
-Número de vértices: 6
-Número de arestas: 7
-Número de comunidades encontradas: 2
+- Máximo de iterações: 100
+- Número de vértices: 6
+- Número de arestas: 7
+- Número de comunidades encontradas: 2
 
-Comunidades encontradas:
-Comunidade de label 0: vértice 0, vértice 1, vértice 2
-Comunidade de label 5: vértice 3, vértice 4, vértice 5
+* Comunidades encontradas:
+- Comunidade de label 0: vértice 0, vértice 1, vértice 2
+- Comunidade de label 5: vértice 3, vértice 4, vértice 5
 
 ![Comunidades detectadas em rede1.csv](plots/comunidades_rede1.png)
 
 ### Dataset rede2.csv
-Máximo de iterações: 100
-Número de vértices: 7
-Número de arestas: 11
-Número de comunidades encontradas: 2
+- Máximo de iterações: 100
+- Número de vértices: 7
+- Número de arestas: 11
+- Número de comunidades encontradas: 2
 
-Comunidades encontradas:
-Comunidade de label 1: vértice 0, vértice 1, vértice 2, vértice 3
-Comunidade de label 5: vértice 4, vértice 5, vértice 6
+* Comunidades encontradas:
+- Comunidade de label 1: vértice 0, vértice 1, vértice 2, vértice 3
+- Comunidade de label 5: vértice 4, vértice 5, vértice 6
 
 ![Comunidades detectadas em rede2.csv](plots/comunidades_rede2.png)
 

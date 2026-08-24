@@ -3,7 +3,7 @@ import numpy as np
 
 grafo = nx.Graph()
 
-MAX_ITERACOES = 100  #Valor arbitrário que deve ser definido como possível limite para o algoritmo
+MAX_ITERACOES = int(input("Defina aqui o número máximo de iterações do algoritmo: "))  #Valor arbitrário que deve ser definido como possível limite para o algoritmo
 
 
 def le_entrada (nomeArquivo):
@@ -14,16 +14,49 @@ def le_entrada (nomeArquivo):
             grafo.add_edge(int(origem), int(destino))   #Insere a aresta  origem -> destino  na estrutura do grafo
 
 def calcular_moda_com_empate_aleatorio(rotulosVizinhos):
-    ...
-    #
-    #
-    # Falta implementar a lógica do cálculo da moda em caso de frequências iguais
-    #
-    #
 
+    #Conta a frequência de cada rótulo dentre os rótulos vizinhos do vértice atual e encontra a maior frequência
+    frequencia = {}
+    maior = -1
+    for rotulo in rotulosVizinhos:
+        if rotulo in frequencia:
+            frequencia[rotulo]+=1
+        else:
+            frequencia[rotulo]=1
+
+        if frequencia[rotulo] > maior:
+            maior = frequencia[rotulo]
+
+    #Monta a lista de candidatos com base na moda (os que mais se repetiram)
+    candidatos = []
+    for rotulo in frequencia:
+        if frequencia[rotulo] == maior:
+            candidatos.append(rotulo)
+
+    #Faz uma escolha aleatória entre os candidatos para decidir o "vencedor"
+    return np.random.choice(candidatos)
 
 nomeArquivo = input ("Digite aqui o nome do arquivo a ser lido: ")
 le_entrada(nomeArquivo)
+
+#Lógica de remapeamento do grafo: caso o arquivo de entrada não seja composto por vértices no intervalo [0, n], mapeamos cada vértice do grafo original
+#como um vértice correspondente entre 0 a n, formando um novo grafo denominado 'grafoRemapeado'
+nosOriginais = list(grafo.nodes())
+
+idxNo = {} #idxNo armazena na chave nó (índice original), seu novo índice 'i'
+for i, no in enumerate(nosOriginais):
+    idxNo[no] = i
+
+noIdx = {} #noIdx[i] retorna, dado um índice 'i' entre 0 e n, seu índice original associado.
+for no, i in idxNo.items():
+    noIdx[i] = no
+
+grafoRemapeado = nx.Graph()
+for origem, destino in grafo.edges():
+    grafoRemapeado.add_edge(idxNo[origem], idxNo[destino])
+
+grafo = grafoRemapeado #Salvas as relações de índice original e novo índice, fazemos ambos apontar pro mesmo conteúdo, para evitar ambiguidades
+
 
 numVertices = grafo.number_of_nodes()
 
@@ -51,7 +84,20 @@ while (iteracao < MAX_ITERACOES and mudou):
 
     iteracao = iteracao+1
 
-print (rotulos)
+comunidades = {}
+
+for contador, label in enumerate(rotulos):
+    verticeOriginal = noIdx[contador]
+    if label not in comunidades:
+        comunidades[label] = []
+    comunidades[label].append(verticeOriginal)
+
+
+print ("VÉRTICES POR COMUNIDADE:")
+for label, vertices in comunidades.items():
+    verticesStr = ", ".join(f"vértice {v}" for v in vertices)
+    print (f"Comunidade de label {label}: {verticesStr}")
+
 
 
 
